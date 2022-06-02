@@ -61,30 +61,30 @@ describe('Pets', ()  => {
   // TEST SHOW
   it('should show a SINGLE pet on /pets/<id> GET', (done) => {
     var pet = new Pet(fido);
-     pet.save((err, data) => {
-       chai.request(server)
-         .get(`/pets/${data._id}`)
-         .end((err, res) => {
-           res.should.have.status(200);
-           res.should.be.html
-           done();
-         });
-     });
+      pet.save((err, data) => {
+        chai.request(server)
+          .get(`/pets/${data._id}`)
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.should.be.html
+            done();
+          });
+      });
 
   });
 
   // TEST EDIT
   it('should edit a SINGLE pet on /pets/<id>/edit GET', (done) => {
     var pet = new Pet(fido);
-     pet.save((err, data) => {
-       chai.request(server)
-         .get(`/pets/${data._id}/edit`)
-         .end((err, res) => {
-           res.should.have.status(200);
-           res.should.be.html
-           done();
-         });
-     });
+      pet.save((err, data) => {
+        chai.request(server)
+          .get(`/pets/${data._id}/edit`)
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.should.be.html
+            done();
+          });
+      });
   });
 
 
@@ -92,7 +92,7 @@ describe('Pets', ()  => {
   it('should update a SINGLE pet on /pets/<id> PUT', (done) => {
     var pet = new Pet(fido);
     pet.save((err, data)  => {
-     chai.request(server)
+      chai.request(server)
       .put(`/pets/${data._id}?_method=PUT`)
       .send({'name': 'Spider'})
       .end((err, res) => {
@@ -107,7 +107,7 @@ describe('Pets', ()  => {
   it('should delete a SINGLE pet on /pets/<id> DELETE', (done) => {
     var pet = new Pet(fido);
     pet.save((err, data)  => {
-     chai.request(server)
+      chai.request(server)
       .delete(`/pets/${data._id}?_method=DELETE`)
       .end((err, res) => {
         res.should.have.status(200);
@@ -115,5 +115,16 @@ describe('Pets', ()  => {
         done();
       });
     });
+  });
+
+  // SEARCH
+  it('should search ALL pets by name on /search GET', (done) => {
+    chai.request(server)
+      .get('/search?term=norman')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.html;
+        done();
+      });
   });
 });
