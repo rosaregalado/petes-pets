@@ -14,7 +14,7 @@ const methodOverride = require('method-override')
 const app = express();
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/local', {
+mongoose.connect('mongodb://127.0.0.1:27017/petes-pets', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

@@ -1,5 +1,5 @@
-process.env.NODE_ENV = "dev"
 module.exports = {
-	"dev": "localhost/petes-pets"
-	// "prod": "localhost/PROD_DB_NAME"
+	"undefined": "127.0.0.1:27017/petes-pets",
+	"dev": "127.0.0.1:27017/petes-pets",
+	"prod": "127.0.0.1:27017/petes-pets"
 }
